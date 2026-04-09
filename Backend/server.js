@@ -6,7 +6,6 @@ import { connectDB } from "./config/db.js";
 import Product from "./models/product.model.js";
 import productRoutes from "./routes/product.route.js";
 
-
 dotenv.config();
 
 const app = express();
@@ -14,19 +13,22 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173"],
+  origin: ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "https://mern-stack-zyyc.vercel.app"],
   credentials: true
 }));
 
-const__dirname = path.resolve();
+const __dirname = path.resolve();
 app.use(express.json()); // allows us to accecpt JSON data in the req.body
 
 app.use("/api/products", productRoutes);
 
-if(process.env.NODE_ENV === "production"){}
-
-app.listen(PORT, ()=>{
-    connectDB();
-console.log("server started at  http://localhost:" + PORT);
-});
+// For Vercel serverless deployment
+if (process.env.NODE_ENV === "production") {
+  module.exports = app;
+} else {
+  app.listen(PORT, ()=>{
+      connectDB();
+  console.log("server started at  http://localhost:" + PORT);
+  });
+}
 

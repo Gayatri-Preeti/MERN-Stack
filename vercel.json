@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "Backend/server.js",
+      "src": "Backend/api/products.js",
       "use": "@vercel/node"
     },
     {
@@ -16,7 +16,7 @@
   "routes": [
     {
       "src": "/api/products/(.*)",
-      "dest": "/Backend/server.js"
+      "dest": "/Backend/api/products.js"
     },
     {
       "src": "/(.*)",
@@ -24,6 +24,7 @@
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "MONGO_URI": "@mongo-uri"
   }
 }
