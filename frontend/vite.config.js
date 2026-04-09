@@ -11,9 +11,13 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          ui: ['@chakra-ui/react', '@emotion/react', '@emotion/styled']
+        manualChunks: (id) => {
+          if (id.includes('react') || id.includes('react-dom')) {
+            return 'vendor'
+          }
+          if (id.includes('@chakra-ui') || id.includes('@emotion')) {
+            return 'ui'
+          }
         }
       }
     }
