@@ -215,10 +215,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
    - Kill existing processes using the ports
    - Or change the PORT in .env file
 
-## Contact
-
-Created by [Your Name] - feel free to contact me!
-
----
-
-**Happy Coding!**
