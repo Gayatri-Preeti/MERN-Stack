@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mern-stack-frontend
+    env: static
+    repo: https://github.com/Gayatri-Preeti/MERN-Stack.git
+    rootDir: frontend
+    buildCommand: "npm run build"
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://mern-stack-backend.onrender.com
+    plan: free
