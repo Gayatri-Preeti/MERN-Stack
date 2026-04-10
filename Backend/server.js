@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "https://mern-stack-zyyc.vercel.app", "https://*.onrender.com"],
+  origin: ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "https://mern-stack-zyyc.vercel.app", "https://mern-stack-frontend.onrender.com"],
   credentials: true
 }));
 
