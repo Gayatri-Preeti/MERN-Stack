@@ -1,9 +1,16 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/products` : "http://localhost:5000/api/products";
+// Production API URL for Render deployment
+const API_BASE_URL = "https://mern-stack-backend.onrender.com/api/products";
+
+// Development fallback (for local testing)
+const DEV_API_URL = "http://localhost:5000/api/products";
+
+// Use production URL in production, dev URL locally
+const BASE_URL = import.meta.env.PROD ? API_BASE_URL : DEV_API_URL;
 
 // Get all products
 export const getProducts = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/`);
+    const response = await fetch(`${BASE_URL}/`);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -20,7 +27,7 @@ export const getProducts = async () => {
 // Create a new product
 export const createProduct = async (productData) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/`, {
+    const response = await fetch(`${BASE_URL}/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +51,7 @@ export const createProduct = async (productData) => {
 // Update a product
 export const updateProduct = async (id, productData) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/${id}`, {
+    const response = await fetch(`${BASE_URL}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +75,7 @@ export const updateProduct = async (id, productData) => {
 // Delete a product
 export const deleteProduct = async (id) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/${id}`, {
+    const response = await fetch(`${BASE_URL}/${id}`, {
       method: "DELETE",
     });
     
