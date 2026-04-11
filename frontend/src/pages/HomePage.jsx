@@ -37,7 +37,9 @@ const HomePage = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
+      console.log("Attempting to fetch products...");
       const response = await getProducts();
+      console.log("API Response:", response);
       if (response.success) {
         setProducts(response.data);
         setError(null);
@@ -45,7 +47,8 @@ const HomePage = () => {
         setError("Failed to fetch products");
       }
     } catch (err) {
-      setError("Failed to connect to server. Please make sure the backend is running.");
+      console.error("Detailed error:", err);
+      setError(`Connection error: ${err.message}`);
       console.error("Error fetching products:", err);
     } finally {
       setLoading(false);
