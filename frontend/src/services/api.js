@@ -1,5 +1,5 @@
 // Production API URL for Render deployment
-const API_BASE_URL = "https://mern-stack-backend.onrender.com/api/products";
+const API_BASE_URL = "https://mern-stack-backend-0q3f.onrender.com/api/products";
 
 // Development fallback (for local testing)
 const DEV_API_URL = "http://localhost:5000/api/products";
